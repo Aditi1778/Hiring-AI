@@ -1,0 +1,25 @@
+# Python virtual environment
+.venv/
+venv/
+env/
+bin/
+lib/
+
+# Local Environment Variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# IDE settings
+.vscode/
+.idea/
+
+# Mac specific
+.DS_Store
+
+# LlamaIndex/Vector DB cache (agar folder hai toh)
+storage/
+
+.env

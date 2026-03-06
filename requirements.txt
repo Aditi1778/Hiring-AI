@@ -1,0 +1,35 @@
+# --- Core Framework & Server ---
+fastapi
+uvicorn
+python-multipart
+pydantic
+pydantic-settings
+python-dotenv
+
+# --- AI Agents (CrewAI) ---
+crewai
+crewai-tools
+langchain-google-genai
+
+# --- LlamaIndex & Advanced Parsing ---
+llama-index
+llama-index-core
+llama-index-readers-file
+llama-index-llms-gemini
+llama-index-embeddings-gemini
+llama-parse
+
+# --- Multi-Format Document Support ---
+pymupdf
+python-docx
+striprtf
+
+# --- Database & Utilities ---
+motor
+pymongo
+requests
+tqdm
+numpy
+pillow
+redis
+pyarrow==14.0.1
