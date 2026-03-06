@@ -17,7 +17,8 @@ class Settings(BaseSettings):
     PORT: int = 8000
 
     REDIS_URL: str
-    SECRET_KEY: str
+    SECRET_KEY: str = os.getenv("SECRET_KEY")
+    ALGORITHM: str = os.getenv("ALGORITHM", "HS256")
 
     LLMSHERPA_API_URL: str
     LLAMA_CLOUD_API_KEY: str

@@ -68,11 +68,12 @@ def process_resume_matching(query_engine, jd_text: str):
         name="Resume_Search_Tool",
         description="Mandatory tool to extract actual data from the uploaded resume. Use this for all resume-related queries.",
     )
-
+    
     # 2. AGENT-TOOL CONNECTION: tell the architect to use this tool
-    # as data architect is defined outside of the function
+    # as data architect is defined outside of the function 
     data_architect.tools = [resume_search_tool]
-
+    
+    
     # Task 1: Semantic Data Extraction
     # Uses the LlamaIndex Query Engine to perform deep retrieval.
     extraction_task = Task(

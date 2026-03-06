@@ -8,12 +8,13 @@ from datetime import datetime
 
 import uvicorn
 from dotenv import load_dotenv
-from fastapi import FastAPI, File, Form, Request, UploadFile
+from fastapi import Depends, FastAPI, File, Form, Request, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from core.config import settings
 from core.database import db_client
+from core.security import get_current_user_id
 from services.ai_matcher import process_resume_matching
 from services.parser import parser_tool
 
@@ -104,7 +105,11 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 
 @app.post("/analyze-resume")
-async def analyze_resume(jd_text: str = Form(...), file: UploadFile = File(...)):
+async def analyze_resume(
+    jd_text: str = Form(...),
+    file: UploadFile = File(...),
+    user_id: str = Depends(get_current_user_id),
+):
     """
     This endpoint:
     1. Saves the uploaded resume temporarily.
@@ -131,6 +136,7 @@ async def analyze_resume(jd_text: str = Form(...), file: UploadFile = File(...))
 
         # Step 3: Ready data in mongoDB
         resume_document = {
+            "user": user_id,
             "filename": file.filename,
             "jd_text": jd_text,
             "analysis_date": final_result["analysis_date"],
